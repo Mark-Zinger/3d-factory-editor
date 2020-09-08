@@ -1,0 +1,4 @@
+[
+    {"type":"gltf", "name": "factory_building_1/factory.glb.gltf","position":[-1.2, 0, 0], "rotation": [0,0,0]},
+    {"type":"gltf", "name": "factory_building_1/factory.glb.gltf","position":[1.2, 0, 0], "rotation": [0,0,0]}
+]
