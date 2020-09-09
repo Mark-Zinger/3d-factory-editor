@@ -4,23 +4,23 @@ import { TransformControls } from 'drei';
 
 import {SceneContext} from './Scene'; 
 
-export default ({ modelName, camera,position }) => {
+export default ({ modelName, }) => {
     const [model, setModel] = useState();
-    const {transformMode, setFocus,focus} = useContext(SceneContext);
-    const transformControls = useRef();
-    const modelRef = useRef();
-  
+    const {transformMode, setFocus,focus, camera,position} = useContext(SceneContext);
+    
     useEffect(()=> {  // load model
       new GLTFLoader().load('resources/models/factory_building_1/factory.glb.gltf', setModel);
     },[]);
 
     const onClickHandler = (e) => {
         e.stopPropagation();
-        console.log('click', e.eventObject.uuid);
         setFocus(e.eventObject.uuid);
     }
   
     const Model = (props) => {
+        const transformControls = useRef();
+        const modelRef = useRef();
+
         useEffect(()=>{
             if(transformControls.current){
                 transformControls.current.detach();
@@ -38,8 +38,7 @@ export default ({ modelName, camera,position }) => {
                 }
                 controls.addEventListener('dragging-changed', callback)
                 return () => controls.removeEventListener('dragging-changed', callback)
-            }
-            
+            }   
         })
 
         useEffect(()=> {

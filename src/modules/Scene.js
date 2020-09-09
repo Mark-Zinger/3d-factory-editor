@@ -23,17 +23,20 @@ export default ({transformMode}) => {
               <ambientLight />
               <pointLight position={[10, 10, 10]} />
                 <SceneObject 
-                  camera={CameraRef}
-                  transformMode={transformMode}
+                 
                   
                   
                 />
+                 <SceneObject 
+                 
+                  
+                  
+                 />
                 
               
               
               <SceneObject 
-                camera={CameraRef}
-                transformMode={transformMode}
+                
                 
                 
                 key={'test2'}

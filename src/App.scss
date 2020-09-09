@@ -8,6 +8,15 @@
   position: absolute;
   left: 0;
   top: 0;
+
+  &__circle-btn {
+    height: 60px;
+    width: 60px;
+    border-radius: 100%;
+    background: white;
+    padding: 10px;
+    box-shadow: 0px 0px 40px -9px rgba(184,184,184,1);
+  }
 }
 
 canvas:focus {

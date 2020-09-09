@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import StateManager from './modules/stateManager';
 import Scene from './modules/Scene';
-import AppInterface from './modules/interface';
+import AppInterface, {interfaceContext} from './modules/interface';
 
 
 import './App.scss';
@@ -14,8 +14,10 @@ function App() {
   return (
     <div className="App">
       <StateManager>
-        <Scene transformMode={transformMode}/>
-        <AppInterface/>
+        <interfaceContext.Provider value={{editorMode, setEditorMode, transformMode, setTransformMode}}>
+          <Scene transformMode={transformMode}/>
+          <AppInterface/>
+        </interfaceContext.Provider>
       </StateManager>
     </div>
   );
