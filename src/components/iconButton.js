@@ -1,25 +1,42 @@
 import React from 'react'
+import Model from '../icons/3d-modeling';
+import Add from '../icons/add';
+import Adjust from '../icons/adjust';
+import Edit from '../icons/edit';
+import Move from '../icons/move';
+import Question from '../icons/question';
+import Rent from '../icons/rent';
+import Scale from '../icons/scale';
+import Testing from '../icons/testing';
+import Trash from '../icons/trash';
+import Close from '../icons/close'
 
-export default (props, onClick, active) => {
-    const {icon} = props;
-
-    return (
-        <div className="interface__circle-btn">
-            <DefaultIcon/>
-        </div>
-    )
+const Icon = ({name}) => {
+    switch(name){
+        case 'transform': return <Model/>;
+        case 'add': return <Add/>;
+        case 'settings': return <Adjust/>;
+        case 'edit': return <Edit/>;
+        case 'move': return <Move/>;
+        case 'question': return <Question/>;
+        case 'book': return <Rent/>;
+        case 'scale': return <Scale/>;
+        case 'rotate': return <Testing/>;
+        case 'trash': return <Trash/>;
+        case 'close': return <Close/>;
+        default: return <Question/>;
+    }
 }
 
+export default (props) => {
+    const {name,onClick, active=false, className='', helper=false} = props;
 
-const DefaultIcon = () => (
-    <svg viewBox="0 0 512 512">
-        <g>
-			<circle cx="255.984" cy="492" r="20"/>
-			<path d="M412.979,155.775C412.321,69.765,342.147,0,255.984,0c-86.57,0-157,70.43-157,157c0,11.046,8.954,20,20,20
-				s20-8.954,20-20c0-64.514,52.486-117,117-117s117,52.486,117,117c0,0.356,0.009,0.71,0.028,1.062
-				c-0.405,46.562-28.227,88.348-71.12,106.661c-40.038,17.094-65.908,56.675-65.908,100.839V412c0,11.046,8.954,20,20,20
-				c11.046,0,20-8.954,20-20v-46.438c0-28.117,16.334-53.258,41.614-64.051c57.979-24.754,95.433-81.479,95.418-144.516
-				C413.016,156.585,413.003,156.179,412.979,155.775z"/>
-		</g>
-    </svg>
-)
+    return (
+        <>
+        <div className={`interface__circle-btn ${active?'_active':''}`} onClick={onClick}>
+            <Icon name={name}/>
+            {helper && <div className="interface__circle-btn-helper">{helper}</div>} 
+        </div>
+        </>
+    )
+}

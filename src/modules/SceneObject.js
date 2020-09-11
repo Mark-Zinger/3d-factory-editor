@@ -4,22 +4,40 @@ import { TransformControls } from 'drei';
 
 import {SceneContext} from './Scene'; 
 
-export default ({ modelName, }) => {
+export default ({ name, position, index }) => {
     const [model, setModel] = useState();
-    const {transformMode, setFocus,focus, camera,position} = useContext(SceneContext);
+    const {transformMode, setFocus,focus, camera, AppState, setAppState} = useContext(SceneContext);
     
+    // переносим
     useEffect(()=> {  // load model
-      new GLTFLoader().load('resources/models/factory_building_1/factory.glb.gltf', setModel);
+      new GLTFLoader().load(`resources/models/${name}`, setModel);
     },[]);
 
     const onClickHandler = (e) => {
         e.stopPropagation();
         setFocus(e.eventObject.uuid);
     }
+
+    
   
     const Model = (props) => {
+        const {index} = props
         const transformControls = useRef();
         const modelRef = useRef();
+
+        const setState = () => {
+            const newState = {...AppState};
+            
+            console.log(newState.models[index]);
+            console.log(modelRef.current.position);
+            newState.models[index].position[0] = modelRef.current.position.x;
+            newState.models[index].position[1] = modelRef.current.position.y;
+            newState.models[index].position[2] = modelRef.current.position.z;
+            setAppState(newState)
+            
+
+
+        }
 
         useEffect(()=>{
             if(transformControls.current){
@@ -34,14 +52,14 @@ export default ({ modelName, }) => {
                 console.log('test');
                 const callback = (event) => {
                     camera.current.enabled = !event.value
-                    console.log(event);
+                    if(!event.value) setState();
                 }
                 controls.addEventListener('dragging-changed', callback)
                 return () => controls.removeEventListener('dragging-changed', callback)
             }   
         })
 
-        useEffect(()=> {
+        useEffect(()=> {    
             if(transformControls.current && focus && modelRef.current){
                 if(focus === modelRef.current.uuid){
                     transformControls.current.attach(modelRef.current)
@@ -52,7 +70,7 @@ export default ({ modelName, }) => {
         },[focus, modelRef])
 
       return (
-        <TransformControls ref={transformControls} mode={transformMode} {...props}>
+        <TransformControls ref={transformControls} mode={transformMode}>
         <Suspense fallback={null}>
             {model && <primitive castShadow {...props} object={model.scene} ref={modelRef} />}
         </Suspense>
@@ -60,5 +78,5 @@ export default ({ modelName, }) => {
       )
     }
   
-    return <Model onClick={onClickHandler} focus={focus} position={position}/>   
+    return <Model onClick={onClickHandler} index={index} position={position}/>   
 }

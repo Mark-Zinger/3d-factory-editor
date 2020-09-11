@@ -14,14 +14,18 @@ export default ({children}) => {
             // default state, if __factoryState is undefined
             return ({
                 models: [
-                    {"type":"gltf", "name": "factory_building_1/factory.glb.gltf","position":[-1.2, 0, 0], "rotation": [0,0,0]},
-                    {"type":"gltf", "name": "factory_building_1/factory.glb.gltf","position":[1.2, 0, 0], "rotation": [0,0,0]}
+                    {"type":"gltf", "id": 0, "name": "factory_building_1/factory.glb.gltf","position":[-1.2, 0, 0], "rotation": [0,0,0]},
+                    {"type":"gltf", "id": 1, "name": "factory_building_1/factory.glb.gltf","position":[5, 0, 0],  "rotation": [0,0,0]}
                 ]
             })
         }
     }
     
     const [AppState, SetAppState] = useState(getLocalStorrage());
+
+    useEffect(()=>{
+        console.log('state',AppState);
+    },[AppState]) 
     
 
     useEffect(()=>{
@@ -32,10 +36,6 @@ export default ({children}) => {
         console.log(AppState);    
         return () => {}
     },[])
-
-    useEffect(() => {
-    }, [AppState])
-
    
     const setLocalStorrage = useCallback(() => {
         const new__factoryState = JSON.stringify(AppState);

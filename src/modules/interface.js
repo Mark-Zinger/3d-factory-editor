@@ -1,20 +1,21 @@
 import React, {useEffect, useContext, useMemo} from 'react'
-import IconButton from '../components/iconButton'
+import EditButton from '../components/editButton';
+import TransformPanel from '../components/transformPanel'
 
 export const interfaceContext = React.createContext();
 
-export default (params) => {
+export default () => {
   const {editorMode,transformMode, setEditorMode,  setTransformMode} = useContext(interfaceContext);
 
-  useEffect(() => {
-    console.log(interfaceContext);
-  }, [])
   
 
   return useMemo(() => (
     <>
-      <div className="interface">
-        <IconButton/>
+      <div className={`interface ${editorMode?'_edit':''}`}>
+        <div className="interface__wrapper">
+          <EditButton/>
+          <TransformPanel/>
+        </div>
       </div>
     </>
   ),[editorMode,transformMode])
