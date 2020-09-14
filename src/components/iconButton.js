@@ -9,7 +9,8 @@ import Rent from '../icons/rent';
 import Scale from '../icons/scale';
 import Testing from '../icons/testing';
 import Trash from '../icons/trash';
-import Close from '../icons/close'
+import Close from '../icons/close';
+import Refresh from '../icons/refresh';
 
 const Icon = ({name}) => {
     switch(name){
@@ -22,6 +23,7 @@ const Icon = ({name}) => {
         case 'book': return <Rent/>;
         case 'scale': return <Scale/>;
         case 'rotate': return <Testing/>;
+        case 'refresh': return <Refresh/>;
         case 'trash': return <Trash/>;
         case 'close': return <Close/>;
         default: return <Question/>;
@@ -29,11 +31,11 @@ const Icon = ({name}) => {
 }
 
 export default (props) => {
-    const {name,onClick, active=false, className='', helper=false} = props;
+    const {name,onClick, active=false, className='', helper=false, direction=false} = props;
 
     return (
         <>
-        <div className={`interface__circle-btn ${active?'_active':''}`} onClick={onClick}>
+        <div className={`interface__circle-btn ${direction?direction:''}${active?'_active':''}`} onClick={onClick}>
             <Icon name={name}/>
             {helper && <div className="interface__circle-btn-helper">{helper}</div>} 
         </div>

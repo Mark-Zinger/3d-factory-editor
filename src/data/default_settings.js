@@ -1,0 +1,145 @@
+ export default {
+  "last_id": 16,
+  "models": [
+    {
+      "type": "gltf",
+      "id": 0,
+      "name": "factory_plane-3.gltf",
+      "position": [0, 0, 0],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 1,
+      "name": "factory_building-1.gltf",
+      "position": [
+        2.5721892842171874,
+        -0.0008809784133234633,
+        2.5828954329736074
+      ],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 2,
+      "name": "factory_building-2.gltf",
+      "position": [0.8391921963772324, 0, 2.581326216922962],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 3,
+      "name": "factory_building-3.gltf",
+      "position": [-0.8856809827175577, 0, 2.5824927228779067],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 4,
+      "name": "factory_building-4.gltf",
+      "position": [-2.597701397938409, 0, 2.595714357672988],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 5,
+      "name": "factory_building-5.gltf",
+      "position": [2.5792280949752935, 0, 0.8424320956745817],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 6,
+      "name": "factory_building-6.gltf",
+      "position": [0.8345229305067852, 0, 0.8298861482094191],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 7,
+      "name": "factory_building-7.gltf",
+      "position": [-0.8681982603888232, 0, 0.8373091273995104],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 8,
+      "name": "factory_building-8.gltf",
+      "position": [-2.596319549991633, 0, 0.8597659065348469],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 9,
+      "name": "factory_building-9.gltf",
+      "position": [2.586372731234186, 0, -0.8970172694826206],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 10,
+      "name": "factory_building-10.gltf",
+      "position": [0.8325080198527981, 0, -0.906116264386384],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 11,
+      "name": "factory_building-11.gltf",
+      "position": [-0.8814061081659075, 0, -0.8986215144964635],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 12,
+      "name": "factory_building-12.gltf",
+      "position": [-2.583189071282019, 0, -0.8948144822783051],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 13,
+      "name": "factory_building-13.gltf",
+      "position": [2.577950090981909, 0, -2.586009080808849],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 14,
+      "name": "factory_building-14.gltf",
+      "position": [0.8340766353504347, 0, -2.58786152910963],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 15,
+      "name": "factory_building-15.gltf",
+      "position": [-0.8922163355517954, 0, -2.5972076823184054],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    },
+    {
+      "type": "gltf",
+      "id": 16,
+      "name": "factory_building-16.gltf",
+      "position": [-2.597013652411505, 0, -2.5892554106139447],
+      "rotation": [0, 0, 0],
+      "scale": [1, 1, 1]
+    }
+  ]
+}

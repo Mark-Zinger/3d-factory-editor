@@ -7,6 +7,8 @@ $grey-2: #777777;
   position: relative;
   height: 100%;
   width: 100%;
+  background: rgb(254,173,166);
+  background: linear-gradient(0deg, rgba(254,173,166,1) 0%, rgba(223,165,121,1) 84%);
 }
 
 .interface {
@@ -54,9 +56,17 @@ $grey-2: #777777;
       top: 50%;
       left: 125%;
       opacity: 0;
+      padding: 2px 7px;
+      // border: 1px solid;
+      border-radius: 5px;
+      background: rgba(255,255,255, 0.3);
       pointer-events: none;
       transform:translateY(-50%);
       transition: opacity .3s ease;
+      ._right & {
+        left: unset;
+        right: 125%;
+      }
     }
 
     &::before {
@@ -96,6 +106,81 @@ $grey-2: #777777;
   &._edit {
     #{$root}__transform-panel {
       transform: translateX(0);
+    }
+    .catalog {
+      transform: translateX(0);
+    }
+  }
+}
+
+.catalog {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  transition: transform .3s ease;
+  transform: translateX(105%);
+
+  &__wrapper {
+    position: relative;
+    display: flex;
+    transition: transform .3s ease;
+    transform: translateX(400px);
+  }
+  &__list {
+    pointer-events: none;
+    position: relative;
+    top: -10px;
+    right: -10px;
+    height: 100vh;
+    width: 400px;
+    background: rgba(245, 241, 234, 0.9);
+    opacity: 0;
+    transition: opacity .2s ease;
+    padding: 0;
+
+    &-wrapper {
+      padding: 50px 0;
+    }
+  }
+  &__item {
+    position: relative;
+    // width: 95%;
+    height: 300px;
+    margin: 0 20px 42px 20px;
+    // margin-bottom: 42px;
+    cursor: pointer;
+    transform-origin: center center;
+    transition: transform .3s ease;
+
+    img {
+      border-radius: 4%;
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+    }
+    &-counter {
+      position: absolute;
+      top: 0;left: 0;
+      font-weight: 700;
+      font-size: 60px;
+      color: rgb(63, 63, 63);
+      transform: translate( 30%,-50%);
+    }
+    &:hover {
+      transform: scale(1.05);
+    }
+    &:target {
+      transform: scale(1.06);
+    }
+  }
+  &._open {
+    .catalog__wrapper {
+      transform: translateX(0);
+    }
+    .catalog__list {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 }

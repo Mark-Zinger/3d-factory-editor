@@ -1,5 +1,6 @@
 import React,{ useState, useEffect, useCallback } from 'react';
 import AppContext from './context';
+import default_settings from '../data/default_settings.js'
 
 
 
@@ -9,29 +10,27 @@ export default ({children}) => {
     const getLocalStorrage = () => {
         if(localStorage.getItem('__factoryState')){
             // parse saved state in localStorage
+            console.log(JSON.parse(localStorage.getItem('__factoryState')))
             return (JSON.parse(localStorage.getItem('__factoryState')));
         } else {
             // default state, if __factoryState is undefined
-            return ({
-                models: [
-                    {"type":"gltf", "id": 0, "name": "factory_building_1/factory.glb.gltf","position":[-1.2, 0, 0], "rotation": [0,0,0]},
-                    {"type":"gltf", "id": 1, "name": "factory_building_1/factory.glb.gltf","position":[5, 0, 0],  "rotation": [0,0,0]}
-                ]
-            })
+            return (default_settings)
         }
     }
     
     const [AppState, SetAppState] = useState(getLocalStorrage());
 
     useEffect(()=>{
-        console.log('state',AppState);
+        const new__factoryState = JSON.stringify(AppState);
+        localStorage.setItem('__factoryState', new__factoryState);
+        console.log(localStorage.__factoryState)
     },[AppState]) 
     
 
     useEffect(()=>{
         window.addEventListener('beforeunload', (event) => {
-            // setLocalStorrage();  
-            localStorage.clear();
+            setLocalStorrage();  
+            // localStorage.clear();
         });
         console.log(AppState);    
         return () => {}

@@ -4,9 +4,9 @@ import { TransformControls } from 'drei';
 
 import {SceneContext} from './Scene'; 
 
-export default ({ name, position, index }) => {
+export default ({ name, position, index, rotation, scale }) => {
     const [model, setModel] = useState();
-    const {transformMode, setFocus,focus, camera, AppState, setAppState} = useContext(SceneContext);
+    const {transformMode, setFocus,focus, camera, AppState, setAppState, editorMode} = useContext(SceneContext);
     
     // переносим
     useEffect(()=> {  // load model
@@ -27,16 +27,18 @@ export default ({ name, position, index }) => {
 
         const setState = () => {
             const newState = {...AppState};
-            
-            console.log(newState.models[index]);
-            console.log(modelRef.current.position);
+    
+            // Хуйня, надо переписать
             newState.models[index].position[0] = modelRef.current.position.x;
             newState.models[index].position[1] = modelRef.current.position.y;
             newState.models[index].position[2] = modelRef.current.position.z;
+            newState.models[index].rotation[0] = modelRef.current.rotation.x;
+            newState.models[index].rotation[1] = modelRef.current.rotation.y;
+            newState.models[index].rotation[2] = modelRef.current.rotation.z;
+            newState.models[index].scale[0] = modelRef.current.scale.x;
+            newState.models[index].scale[1] = modelRef.current.scale.y;
+            newState.models[index].scale[2] = modelRef.current.scale.z;
             setAppState(newState)
-            
-
-
         }
 
         useEffect(()=>{
@@ -49,7 +51,7 @@ export default ({ name, position, index }) => {
             if(transformControls.current){
                 // transformControls.current.detach();
                 const controls = transformControls.current;
-                console.log('test');
+                // console.log('test');
                 const callback = (event) => {
                     camera.current.enabled = !event.value
                     if(!event.value) setState();
@@ -61,7 +63,7 @@ export default ({ name, position, index }) => {
 
         useEffect(()=> {    
             if(transformControls.current && focus && modelRef.current){
-                if(focus === modelRef.current.uuid){
+                if((focus === modelRef.current.uuid) && editorMode){
                     transformControls.current.attach(modelRef.current)
                 } else {
                     transformControls.current.detach();
@@ -78,5 +80,5 @@ export default ({ name, position, index }) => {
       )
     }
   
-    return <Model onClick={onClickHandler} index={index} position={position}/>   
+    return <Model onClick={onClickHandler} index={index} position={position} rotation={rotation} scale={scale} />   
 }
