@@ -1,6 +1,6 @@
 import React,{ useState, useEffect, useCallback } from 'react';
 import AppContext from './context';
-import default_settings from '../data/default_settings.js'
+import default_settings from '../data/default_settings.json'
 
 
 
@@ -14,7 +14,7 @@ export default ({children}) => {
             return (JSON.parse(localStorage.getItem('__factoryState')));
         } else {
             // default state, if __factoryState is undefined
-            return (default_settings)
+            return ({...default_settings})
         }
     }
     

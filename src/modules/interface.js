@@ -15,7 +15,7 @@ export default () => {
       <div className={`interface ${editorMode?'_edit':''}`}>
         <div className="interface__wrapper">
           <EditButton/>
-          <RefreshButton/>
+          {/* <RefreshButton/> */}
           <TransformPanel/>
           <Catalog/>
         </div>
