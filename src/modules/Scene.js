@@ -41,7 +41,7 @@ export default ({transformMode}) => {
           >
             <SceneContext.Provider value={{editorMode,helpersMode,focus,setFocus, camera: CameraRef, transformMode, AppState, setAppState}}>
               
-              <MapControls ref={CameraRef}/>
+              <OrbitControls ref={CameraRef}/>
               
               <ambientLight />
               <pointLight position={[10, 10, 10]} />
@@ -53,7 +53,7 @@ export default ({transformMode}) => {
             </SceneContext.Provider>
             <EffectComposer>
               <DepthOfField focusDistance={1} focalLength={0.02} bokehScale={0.6} height={480} />
-              <Noise opacity={0.02} />
+              <Noise opacity={0.1} />
               <Vignette eskil={false} offset={0.1} darkness={0.6} />
               <Bloom luminanceThreshold={2} luminanceSmoothing={1.4} height={1000} />
             </EffectComposer>
